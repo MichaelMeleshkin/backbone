@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ToDo List</title>
+        <script type="text/javascript" src="./min/js/lib/jquery-2.2.2.js"></script>
+        <script type="text/javascript" src="./min/js/lib/underscore.js"></script>
+        <script type="text/javascript" src="./min/js/lib/backbone.js"></script>
+        <script type="text/javascript" src="./min/js/src/main.js"></script>
+
+        <link rel="stylesheet" href="./min/css/todo.css"/>
+        <link rel="stylesheet" href="./min/css/main.css"/>
+    </head>
+    <body>
+        <div class="content-wrapper">
+
+            <div id="container">
+                Task creation
+                <div>
+                    <label>Title: <input class="title" type="text"/></label>
+                </div>
+                <div>
+                    <label>Description: <textarea class="description" cols="30" rows="10"></textarea></label>
+                </div>
+                <div>
+                    <button class="create">Create</button>
+                </div>
+            </div>
+            <ul id="todoList"></ul>
+
+        </div>
+    </body>
+</html>
