@@ -1,1 +1,5 @@
-body #container{background:seagreen !important}
+#container{margin:10px;padding:10px;background:#CCC;border-radius:5px;border:1px solid #BBB}
+#container>div{padding-top:10px}#todoList{margin:0 10px;padding:0;list-style:none}
+#todoList pre{margin:0}#todoList li{padding:10px;background:#CCC;border:1px solid;border-color:#DDD #BBB #AAA #BBB}
+#todoList li:first-child{border-top:1px solid #BBB;border-top-left-radius:5px;border-top-right-radius:5px}
+#todoList li:last-child{border-bottom:1px solid #BBB;border-bottom-left-radius:5px;border-bottom-right-radius:5px}

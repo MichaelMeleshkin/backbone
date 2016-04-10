@@ -13,6 +13,11 @@ $(document).ready(function(event) {
                 description: this.$('.description').val()
             });
             this.todoList.collection.add(todo);
+            todo.save();
+            this.todoList.collection.on('all', function(event) {
+                console.log('all');
+                console.log(event);
+            });
         }
     });
 
@@ -23,6 +28,13 @@ $(document).ready(function(event) {
             _.bindAll(this, 'render', 'appendToList');
             this.collection = new TodoList();
             this.collection.bind('add', this.appendToList);
+//            this.collection.on('all', function(event) {
+//                console.log('all');
+//                console.log(event);
+//            });
+//            this.collection.on('sync', function(event) {
+//                console.log('sync');
+//            });
         },
 
         render:function(){
@@ -30,6 +42,7 @@ $(document).ready(function(event) {
             $.each(this.collection.models, function(i, todo){
                 self.appendToList(todo);
             });
+            this.collection.sync();
         },
 
         appendToList: function(todo) {
@@ -37,14 +50,6 @@ $(document).ready(function(event) {
                 model : todo
             });
             $(this.el).append(todoView.render().el);
-        }
-    });
-
-
-    var Todo = Backbone.Model.extend({
-        initialize: function(param) {
-            this.name = param.name;
-            this.description = param.description;
         }
     });
 
@@ -56,22 +61,21 @@ $(document).ready(function(event) {
         }
     });
 
+    var Todo = Backbone.Model.extend({
+        initialize: function(param) {
+            this.name = param.name;
+            this.description = param.description;
+        }
+    });
+
     var TodoList = Backbone.Collection.extend({
+        localStorage: new Backbone.LocalStorage("TodoList"),
         model: Todo
     });
 
     new Container();
 
-//    Backbone.sync = function(method, model, options) {
-//        console.log(method);
-//        console.log(model);
-//        console.log(options);
-//
-//
-//
-//
-//    };
-//
-//    Backbone.sync();
+
+
 
 });

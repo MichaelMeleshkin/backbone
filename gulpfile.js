@@ -1,24 +1,16 @@
 'use strict';
 
-var gulp = require('gulp');
-var sass = require('gulp-ruby-sass');
-var uglify = require('gulp-uglify');
-var uglifycss = require('gulp-uglifycss');
+var gulp = require('gulp'),
+    sass = require('gulp-ruby-sass'),
+    uglify = require('gulp-uglify'),
+    uglifycss = require('gulp-uglifycss'),
+    concat = require('gulp-concat'),
+    concatCss = require('gulp-concat-css');
 
 gulp.task('sass', function () {
-    return sass('./sass/**/*.scss')
+    return sass('./css/sass/**/*.scss')
         .on('error', sass.logError)
-        .pipe(gulp.dest('./css'));
-});
-
-gulp.task('js', function() {
-    return gulp.src('./js/**/*.js')
-        .pipe(uglify())
-        .pipe(gulp.dest('./min/js'));
-});
-
-gulp.task('css', function () {
-    gulp.src('./css/**/*.css')
+        .pipe(concatCss("main.css"))
         .pipe(uglifycss({
             "maxLineLen": 80,
             "uglyComments": true
@@ -26,8 +18,17 @@ gulp.task('css', function () {
         .pipe(gulp.dest('./min/css'));
 });
 
-gulp.task('minimize', ['js', 'css']);
-
-gulp.task('sass:watch', function () {
-    gulp.watch('./sass/**/*.scss', ['sass']);
+gulp.task('js', function() {
+    return gulp.src([
+            "./js/lib/jquery-2.2.2.js",
+            "./js/lib/underscore.js",
+            "./js/lib/backbone.js",
+            "./js/lib/backbone.localStorage.js",
+            "./js/src/*.js"
+        ])
+//        .pipe(uglify())
+        .pipe(concat('main.js'))
+        .pipe(gulp.dest('./min/js'));
 });
+
+gulp.task('default', ['js', 'sass']);
