@@ -1,81 +1,95 @@
-$(document).ready(function(event) {
-    var Container = Backbone.View.extend({
-        el: '#container',
+jQuery(function(){
+    window.App = {};
+    window.App.View = {};
+    window.App.Model = {};
+    window.App.Collection = {};
+
+    window.App.Instanse = {};
+
+    window.App.Model.Todo = Backbone.Model.extend({
+
+    });
+
+    window.App.View.TodoView = Backbone.View.extend({
+        tagName: 'li',
+        template: '#todoTemplate',
         events : {
-            'click button' : 'createTodo'
+            'click .delete' : 'deleteTodo',
+            'click .update' : 'updateTodo',
+            'click .cancel' : 'cancelTodo',
+            'click .save' : 'saveTodo'
         },
         initialize: function() {
-            this.todoList = new TodoListView();
+            this.render();
         },
-        createTodo: function() {
-            var todo = new Todo({
-                title: this.$('.title').val(),
-                description: this.$('.description').val()
-            });
-            this.todoList.collection.add(todo);
-            todo.save();
-            this.todoList.collection.on('all', function(event) {
-                console.log('all');
-                console.log(event);
-            });
-        }
-    });
-
-    var TodoListView = Backbone.View.extend({
-        el: '#todoList',
-
-        initialize : function() {
-            _.bindAll(this, 'render', 'appendToList');
-            this.collection = new TodoList();
-            this.collection.bind('add', this.appendToList);
-//            this.collection.on('all', function(event) {
-//                console.log('all');
-//                console.log(event);
-//            });
-//            this.collection.on('sync', function(event) {
-//                console.log('sync');
-//            });
+        deleteTodo: function() {
+            this.model.destroy();
         },
-
-        render:function(){
-
-            $.each(this.collection.models, function(i, todo){
-                self.appendToList(todo);
-            });
-            this.collection.sync();
+        updateTodo: function() {
+            this.$('.container, .save, .update, .info, .delete, .cancel').toggle();
         },
-
-        appendToList: function(todo) {
-            var todoView = new TodoView({
-                model : todo
-            });
-            $(this.el).append(todoView.render().el);
-        }
-    });
-
-    var TodoView = Backbone.View.extend({
-        tagName : 'li',
-        render : function() {
-            this.$el.html("<pre>Title: " + this.model.get('title') + "</br>Description: " + this.model.get('description') + "</pre>");
+        cancelTodo: function() {
+            this.$('.container, .save, .update, .info, .delete, .cancel').toggle();
+        },
+        saveTodo: function() {
+            this.model.set('title', this.$('.title').val());
+            this.model.set('description', this.$('.description').val());
+            this.model.save();
+        },
+        render: function() {
+            var template = _.template( $(this.template).html() );
+            this.$el.html( template(this.model.toJSON()) );
             return this;
         }
     });
 
-    var Todo = Backbone.Model.extend({
-        initialize: function(param) {
-            this.name = param.name;
-            this.description = param.description;
+    window.App.Collection.TodoList = Backbone.Collection.extend({
+        localStorage: new Backbone.LocalStorage("TodoList"),
+        model: window.App.Model.Todo,
+        initialize: function() {
+            this.fetch();
+            this.on('add remove change', function() {
+                window.App.Instanse.TodoListView = new window.App.View.TodoListView({collection: window.App.Collection.todoList});
+            });
         }
     });
 
-    var TodoList = Backbone.Collection.extend({
-        localStorage: new Backbone.LocalStorage("TodoList"),
-        model: Todo
+    window.App.View.TodoListView = Backbone.View.extend({
+        tagName: 'ul',
+        id: 'todoList',
+        template: '#todoTemplate',
+        parentEl: '#todoListWrap',
+        initialize: function() {
+            $( this.parentEl ).html( this.render().el );
+        },
+        render: function() {
+            this.collection.each(function(todo) {
+                var todoView = new window.App.View.TodoView({model: todo});
+                this.$el.append( todoView.render().el );
+            }, this);
+            return this;
+        }
     });
 
-    new Container();
+    window.App.View.Container = Backbone.View.extend({
+        el: '#container',
+        events : {
+            'click button' : 'createTodo'
+        },
+        createTodo: function() {
+            var todo = new window.App.Model.Todo({
+                title: this.$('.title').val(),
+                description: this.$('.description').val()
+            });
 
+            this.collection.add(todo);
+            todo.save();
+            this.collection.fetch();
+        }
+    });
 
+    window.App.Collection.todoList = new window.App.Collection.TodoList();
+    window.App.Instanse.TodoListView = new window.App.View.TodoListView({collection: window.App.Collection.todoList});
 
-
+    window.App.Instanse.Container = new window.App.View.Container({collection: window.App.Collection.todoList});
 });

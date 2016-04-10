@@ -4,11 +4,27 @@
         <title>ToDo List</title>
         <script type="text/javascript" src="./min/js/main.js"></script>
         <link rel="stylesheet" href="./min/css/main.css"/>
+
+        <script id="todoTemplate" type="text/template">
+            <pre class="info">Title: <%= title %> <br />Description: <%= description %></pre>
+            <div class="container">
+                <div>
+                    <label>Title: <input class="title" type="text" value="<%= title %>"/></label>
+                </div>
+                <div>
+                    <label>Description: <textarea class="description" cols="30" rows="10"><%= description %></textarea></label>
+                </div>
+            </div>
+            <button class="delete">Delete</button>
+            <button class="save">Save</button>
+            <button class="cancel">Cancel</button>
+            <button class="update">Update</button>
+        </script>
     </head>
     <body>
         <div class="content-wrapper">
 
-            <div id="container">
+            <div id="container" class="container">
                 Task creation
                 <div>
                     <label>Title: <input class="title" type="text"/></label>
@@ -20,7 +36,7 @@
                     <button class="create">Create</button>
                 </div>
             </div>
-            <ul id="todoList"></ul>
+            <div id="todoListWrap"></div>
 
         </div>
     </body>
