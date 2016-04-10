@@ -26,7 +26,7 @@ gulp.task('js', function() {
             "./js/lib/backbone.localStorage.js",
             "./js/src/*.js"
         ])
-//        .pipe(uglify())
+        .pipe(uglify())
         .pipe(concat('main.js'))
         .pipe(gulp.dest('./min/js'));
 });
