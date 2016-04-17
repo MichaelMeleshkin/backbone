@@ -5,7 +5,8 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     uglifycss = require('gulp-uglifycss'),
     concat = require('gulp-concat'),
-    concatCss = require('gulp-concat-css');
+    concatCss = require('gulp-concat-css'),
+    livereload = require('gulp-livereload');
 
 gulp.task('sass', function () {
     return sass('./css/sass/**/*.scss')
@@ -24,11 +25,21 @@ gulp.task('js', function() {
             "./js/lib/underscore.js",
             "./js/lib/backbone.js",
             "./js/lib/backbone.localStorage.js",
-            "./js/src/*.js"
+            "./js/src/namespace.js",
+            "./js/src/app/models/**/*.js",
+            "./js/src/app/views/**/*.js",
+            "./js/src/app/collections/**/*.js",
+            "./js/src/main/**/*.js"
         ])
         .pipe(uglify())
         .pipe(concat('main.js'))
         .pipe(gulp.dest('./min/js'));
+});
+
+gulp.task('watch', function() {
+    livereload.listen();
+    gulp.watch('./css/sass/**/*.scss', ['sass']);
+    gulp.watch('./js/**/*.js', ['js']);
 });
 
 gulp.task('default', ['js', 'sass']);

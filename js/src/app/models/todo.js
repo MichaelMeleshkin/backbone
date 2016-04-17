@@ -1,0 +1,1 @@
+App.Model.Todo = Backbone.Model.extend({});
