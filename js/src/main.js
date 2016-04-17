@@ -1,39 +1,43 @@
 jQuery(function(){
-    window.App = {};
-    window.App.View = {};
-    window.App.Model = {};
-    window.App.Collection = {};
+    window.App = {
+        View: {},
+        Model: {},
+        Collection: {}
+    };
 
-    window.App.Instanse = {};
-
-    window.App.Model.Todo = Backbone.Model.extend({
+    App.Model.Todo = Backbone.Model.extend({
 
     });
 
-    window.App.View.TodoView = Backbone.View.extend({
+    App.View.TodoView = Backbone.View.extend({
         tagName: 'li',
         template: '#todoTemplate',
         events : {
             'click .delete' : 'deleteTodo',
-            'click .update' : 'updateTodo',
-            'click .cancel' : 'cancelTodo',
+            'click .update' : 'toggleTodo',
+            'click .cancel' : 'toggleTodo',
             'click .save' : 'saveTodo'
         },
         initialize: function() {
             this.render();
+            this.model.on('change', function() {
+                this.render();
+            }, this);
+            this.model.on('destroy', function() {
+                this.$el.remove();
+            }, this);
         },
         deleteTodo: function() {
             this.model.destroy();
         },
-        updateTodo: function() {
-            this.$('.container, .save, .update, .info, .delete, .cancel').toggle();
-        },
-        cancelTodo: function() {
+        toggleTodo: function() {
             this.$('.container, .save, .update, .info, .delete, .cancel').toggle();
         },
         saveTodo: function() {
-            this.model.set('title', this.$('.title').val());
-            this.model.set('description', this.$('.description').val());
+            this.model.set({
+                title: this.$('.title').val(),
+                description: this.$('.description').val()
+            });
             this.model.save();
         },
         render: function() {
@@ -43,41 +47,39 @@ jQuery(function(){
         }
     });
 
-    window.App.Collection.TodoList = Backbone.Collection.extend({
+    App.Collection.TodoList = Backbone.Collection.extend({
         localStorage: new Backbone.LocalStorage("TodoList"),
-        model: window.App.Model.Todo,
-        initialize: function() {
-            this.fetch();
-            this.on('add remove change', function() {
-                window.App.Instanse.TodoListView = new window.App.View.TodoListView({collection: window.App.Collection.todoList});
-            });
-        }
+        model: App.Model.Todo
     });
 
-    window.App.View.TodoListView = Backbone.View.extend({
+    App.View.TodoListView = Backbone.View.extend({
+        el: '#todoList',
         tagName: 'ul',
-        id: 'todoList',
         template: '#todoTemplate',
-        parentEl: '#todoListWrap',
         initialize: function() {
-            $( this.parentEl ).html( this.render().el );
+            this.render();
+            this.collection.on('add', this.renderNew, this);
         },
         render: function() {
+            this.$el.empty();
             this.collection.each(function(todo) {
-                var todoView = new window.App.View.TodoView({model: todo});
-                this.$el.append( todoView.render().el );
+                this.renderNew(todo);
             }, this);
             return this;
+        },
+        renderNew: function(todo) {
+            var todoView = new App.View.TodoView({model: todo});
+            this.$el.append( todoView.render().el );
         }
     });
 
-    window.App.View.Container = Backbone.View.extend({
+    App.View.TodoFormCreation = Backbone.View.extend({
         el: '#container',
         events : {
             'click button' : 'createTodo'
         },
         createTodo: function() {
-            var todo = new window.App.Model.Todo({
+            var todo = new App.Model.Todo({
                 title: this.$('.title').val(),
                 description: this.$('.description').val()
             });
@@ -88,8 +90,10 @@ jQuery(function(){
         }
     });
 
-    window.App.Collection.todoList = new window.App.Collection.TodoList();
-    window.App.Instanse.TodoListView = new window.App.View.TodoListView({collection: window.App.Collection.todoList});
+    App.Collection.todoList = new App.Collection.TodoList();
+    App.Collection.todoList.fetch();
 
-    window.App.Instanse.Container = new window.App.View.Container({collection: window.App.Collection.todoList});
+    new App.View.TodoListView({collection: App.Collection.todoList});
+
+    new App.View.TodoFormCreation({collection: App.Collection.todoList});
 });
