@@ -5,4 +5,7 @@ jQuery(function(){
     App.View.todoListView = new App.View.TodoListView({collection: App.Collection.todoList});
 
     App.View.todoFormCreation = new App.View.TodoFormCreation({collection: App.Collection.todoList});
+
+    App.Router.todoRouter = new App.Router.TodoRouter();
+    Backbone.history.start();
 });

@@ -2,42 +2,51 @@
 <html>
     <head>
         <title>ToDo List</title>
-        <script type="text/javascript" src="./min/js/main.js"></script>
-        <link rel="stylesheet" href="./min/css/main.css"/>
+        <script type="text/javascript" src="/backbone/min/js/main.js"></script>
+        <link rel="stylesheet" href="/backbone/min/css/main.css"/>
 
-        <script id="todoTemplate" type="text/template">
-            <pre class="info">Title: <%= title %> <br />Description: <%= description %></pre>
-            <div class="container">
-                <div>
-                    <label>Title: <input class="title" type="text" value="<%= title %>"/></label>
-                </div>
-                <div>
-                    <label>Description: <textarea class="description" cols="30" rows="10"><%= description %></textarea></label>
-                </div>
-            </div>
+        <script id="todoListItemTemplate" type="text/template">
+            <a href="#show/<%= id %>"><%= title ? title : 'Empty title' %></a>
+            <a href="#edit/<%= id %>">Edit</a>
+        </script>
+        <script id="todoFullTemplate" type="text/template">
+            <div>Title: <%= title %></div>
+            <div>Description:</div>
+            <pre class="info"><%= description %></pre>
             <button class="delete">Delete</button>
-            <button class="save">Save</button>
-            <button class="cancel">Cancel</button>
-            <button class="update">Update</button>
+        </script>
+        <script id="todoEditTemplate" type="text/template">
+            Edit task
+            <div>
+                <label>Title: <input class="title" type="text" value="<%= title %>"/></label>
+            </div>
+            <div>
+                <label><div>Description: </div><textarea class="description" cols="30" rows="2"><%= description %></textarea></label>
+            </div>
+            <div>
+                <button class="edit">Edit</button>
+            </div>
+        </script>
+        <script id="todoCreateTemplate" type="text/template">
+            Task creation
+            <div>
+                <label>Title: <input class="title" type="text"/></label>
+            </div>
+            <div>
+                <label><div>Description: </div><textarea class="description" cols="30" rows="2"></textarea></label>
+            </div>
+            <div>
+                <button class="create">Create</button>
+            </div>
+        </script>
+        <script id="todoBackToMainLinkTemplate" type="text/template">
+            <a class="m10 iblock hidden" href="#show/">Back to all</a>
+        </script>
+        <script id="todoCreateLinkTemplate" type="text/template">
+            <a class="m10 iblock hidden" href="#create/">Create new task</a>
         </script>
     </head>
     <body>
-        <div class="content-wrapper">
-
-            <div id="container" class="container">
-                Task creation
-                <div>
-                    <label>Title: <input class="title" type="text"/></label>
-                </div>
-                <div>
-                    <label>Description: <textarea class="description" cols="30" rows="10"></textarea></label>
-                </div>
-                <div>
-                    <button class="create">Create</button>
-                </div>
-            </div>
-            <ul id="todoList"></ul>
-
-        </div>
+        <div id="content" class="content-wrapper"></div>
     </body>
 </html>

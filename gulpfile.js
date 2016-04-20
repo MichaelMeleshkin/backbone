@@ -26,9 +26,11 @@ gulp.task('js', function() {
             "./js/lib/backbone.js",
             "./js/lib/backbone.localStorage.js",
             "./js/src/namespace.js",
+            "./js/src/app/events/**/*.js",
             "./js/src/app/models/**/*.js",
             "./js/src/app/views/**/*.js",
             "./js/src/app/collections/**/*.js",
+            "./js/src/app/routers/**/*.js",
             "./js/src/main/**/*.js"
         ])
         .pipe(uglify())
@@ -39,7 +41,10 @@ gulp.task('js', function() {
 gulp.task('watch', function() {
     livereload.listen();
     gulp.watch('./css/sass/**/*.scss', ['sass']);
-    gulp.watch('./js/**/*.js', ['js']);
+    gulp.watch([
+        './js/**/*.js',
+        './gulpfile.js'
+    ], ['js']);
 });
 
 gulp.task('default', ['js', 'sass']);

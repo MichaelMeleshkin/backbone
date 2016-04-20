@@ -1,0 +1,1 @@
+App.Router.Events = _.extend({}, Backbone.Events);

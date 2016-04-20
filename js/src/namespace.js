@@ -1,5 +1,6 @@
 window.App = {
     View: {},
     Model: {},
-    Collection: {}
+    Collection: {},
+    Router: {}
 };
