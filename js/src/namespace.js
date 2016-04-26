@@ -1,4 +1,4 @@
-window.App = {
+var App = {
     View: {},
     Model: {},
     Collection: {},
