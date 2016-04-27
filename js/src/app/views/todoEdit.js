@@ -12,6 +12,7 @@ App.View.TodoEditView = Backbone.View.extend({
     saveTodo: function() {
         this.model.set({
             title: this.$('.title').val(),
+            date: this.$('.date').val(),
             description: this.$('.description').val()
         });
         this.model.save();

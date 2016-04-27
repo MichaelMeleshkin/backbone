@@ -1,6 +1,7 @@
 App.View.TodoListView = Backbone.View.extend({
     tagName: 'ul',
     id: 'todoList',
+    categories: '#tasksCategoryTemplate',
 
     content: '#content',
     createNewLinkTemplate: '#todoCreateLinkTemplate',
@@ -13,6 +14,10 @@ App.View.TodoListView = Backbone.View.extend({
         App.Router.Events.on('showAll', this.renderAll, this);
         App.Router.Events.on('show', this.renderByID, this);
         App.Router.Events.on('edit', this.editByID, this);
+
+        $( '#tasks-category' ).on('change', function() {
+            App.Router.Events.trigger('showAll');
+        });
     },
     render: function() {
         var $content = $( this.content ).empty();
@@ -25,11 +30,38 @@ App.View.TodoListView = Backbone.View.extend({
 
         this.additionalTemplate = this.createNewLinkTemplate;
         this.render();
+        console.log();
         return this;
     },
     renderNew: function(todo) {
+        var type = +$('#tasks-category').val();
         var todoView = new App.View.TodoView({model: todo});
-        this.$el.append( todoView.render().el );
+
+        var date = todo.get('date').split('/');
+        var now = new Date();
+
+        if (type == 0) {
+            this.$el.append( todoView.render().el );
+        } else if (type == 1) {
+            if (+date[0] == now.getMonth() + 1 && +date[1] == now.getDate() && +date[2] == now.getFullYear()) {
+                this.$el.append( todoView.render().el );
+            }
+        } else if (type == 2) {
+            if (+date[0] == now.getMonth() + 1 && +date[1] > now.getDate() && +date[2] == now.getFullYear()) {
+                this.$el.append( todoView.render().el );
+            }
+        } else if (type == 3) {
+            if (todo.get('status') == 'completed') {
+                this.$el.append( todoView.render().el );
+            }
+        } else if (type == 4) {
+            if (+date[0] == now.getMonth() + 1 && +date[1] < now.getDate() && +date[2] == now.getFullYear()) {
+                this.$el.append( todoView.render().el );
+            }
+        }
+
+
+
     },
     renderByID: function(id) {
         var model = this.collection.get(id);

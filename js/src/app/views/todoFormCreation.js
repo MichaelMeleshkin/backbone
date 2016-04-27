@@ -23,10 +23,12 @@ App.View.TodoFormCreation = Backbone.View.extend({
             .append( this.$el );
 
         this.delegateEvents();
+        this.$('.date').datepicker();
     },
     createTodo: function() {
         var todo = new App.Model.Todo({
             title: this.$('.title').val(),
+            date: this.$('.date').val(),
             description: this.$('.description').val()
         });
 

@@ -6,6 +6,18 @@
   border: 1px solid #BBB;
 }
 
+.ui-datepicker {
+  display: none;
+  padding: 10px;
+  border: 1px solid #BBB;
+  background: #EEE;
+  border-radius: 5px;
+}
+
+.ui-datepicker-next {
+  float: right;
+}
+
 #todoList {
   margin: 0 10px;
   padding: 0;

@@ -1,5 +1,7 @@
+.m10{margin:10px}.iblock{display:inline-block}a{color:#333;text-shadow:1px 1px 0 #EEE;text-decoration:underline;cursor:pointer}
 .container{margin:10px;padding:10px;background:#EEE;border-radius:5px;border:1px solid #BBB}
-#todoList{margin:0 10px;padding:0;list-style:none}#todoList pre{margin:0}#todoList li{padding:10px;background:#EEE;border:1px solid;border-color:#FFF #BBB #BBB #BBB}
+.ui-datepicker{display:none;padding:10px;border:1px solid #BBB;background:#EEE;border-radius:5px}
+.ui-datepicker-next{float:right}#todoList{margin:0 10px;padding:0;list-style:none}
+#todoList pre{margin:0}#todoList li{padding:10px;background:#EEE;border:1px solid;border-color:#FFF #BBB #BBB #BBB}
 #todoList li a{text-shadow:1px 1px 0 #FFF}#todoList li:first-child{border-top:1px solid #BBB;border-top-left-radius:5px;border-top-right-radius:5px}
 #todoList li:last-child{border-bottom:1px solid #BBB;border-bottom-left-radius:5px;border-bottom-right-radius:5px}
-.m10{margin:10px}.iblock{display:inline-block}a{color:#333;text-shadow:1px 1px 0 #EEE}

@@ -1,1 +1,5 @@
-App.Model.Todo = Backbone.Model.extend({});
+App.Model.Todo = Backbone.Model.extend({
+    defaults: {
+        status: null
+    }
+});

@@ -22,6 +22,7 @@ gulp.task('sass', function () {
 gulp.task('js', function() {
     return gulp.src([
             "./js/lib/jquery-2.2.2.js",
+            "./js/lib/jquery-ui-datepicker.js",
             "./js/lib/underscore.js",
             "./js/lib/backbone.js",
             "./js/lib/backbone.localStorage.js",
