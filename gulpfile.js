@@ -16,7 +16,7 @@ gulp.task('sass', function () {
             "maxLineLen": 80,
             "uglyComments": true
         }))
-        .pipe(gulp.dest('./min/css'));
+        .pipe(gulp.dest('./server/public/min/css'));
 });
 
 gulp.task('js', function() {
@@ -36,7 +36,7 @@ gulp.task('js', function() {
         ])
         .pipe(uglify())
         .pipe(concat('main.js'))
-        .pipe(gulp.dest('./min/js'));
+        .pipe(gulp.dest('./server/public/min/js'));
 });
 
 gulp.task('watch', function() {

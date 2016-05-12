@@ -1,5 +1,6 @@
 App.Model.Todo = Backbone.Model.extend({
     defaults: {
-        status: null
+        status: null,
+        id: this.cid
     }
 });

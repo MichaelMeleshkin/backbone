@@ -7,5 +7,8 @@ jQuery(function(){
     App.View.todoFormCreation = new App.View.TodoFormCreation({collection: App.Collection.todoList});
 
     App.Router.todoRouter = new App.Router.TodoRouter();
-    Backbone.history.start();
+    App.Collection.todoList.on('sync', function () {
+        Backbone.history.stop();
+        Backbone.history.start();
+    });
 });

@@ -4,13 +4,25 @@
   "description": "",
   "main": "gulpfile.js",
   "dependencies": {
+    "body-parser": "^1.15.1",
+    "connect-mongo": "^1.1.0",
+    "cookie-parser": "^1.4.1",
+    "crypto": "0.0.3",
+    "express": "^4.13.4",
+    "express-favicon": "^1.0.1",
+    "express-session": "^1.13.0",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-concat-css": "^2.2.0",
+    "gulp-livereload": "^3.8.1",
     "gulp-ruby-sass": "^2.0.6",
     "gulp-uglify": "^1.5.3",
     "gulp-uglifycss": "^1.0.6",
-    "gulp-livereload": "^3.8.1"
+    "mongodb": "^2.1.18",
+    "nconf": "^0.8.4",
+    "path": "^0.12.7",
+    "routes": "^2.1.0",
+    "swig": "^1.4.2"
   },
   "devDependencies": {},
   "scripts": {

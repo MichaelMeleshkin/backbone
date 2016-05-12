@@ -9,7 +9,6 @@ App.View.TodoFullView = Backbone.View.extend({
         this.model.on('change:status', function() {
             this.$el.empty();
             $('<span/>').text('Task has been completed').appendTo(this.$el.delay(1500).fadeOut(500));
-            console.log('testtest');
         }, this);
     },
     deleteTodo: function() {

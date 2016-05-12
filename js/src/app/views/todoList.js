@@ -10,6 +10,7 @@ App.View.TodoListView = Backbone.View.extend({
     additionalTemplate: '',
 
     initialize: function() {
+        this.collection.on('sync', this.renderAll, this);
         this.collection.on('destroy', this.destroyed, this);
         App.Router.Events.on('showAll', this.renderAll, this);
         App.Router.Events.on('show', this.renderByID, this);
@@ -30,7 +31,6 @@ App.View.TodoListView = Backbone.View.extend({
 
         this.additionalTemplate = this.createNewLinkTemplate;
         this.render();
-        console.log();
         return this;
     },
     renderNew: function(todo) {
