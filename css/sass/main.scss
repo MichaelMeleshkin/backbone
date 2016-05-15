@@ -6,9 +6,10 @@
   display: inline-block;
 }
 
-a {
+a,
+.link {
   color: #333;
-  text-shadow: 1px 1px 0px #EEE;
+  text-shadow: 1px 1px 0 #EEE;
   text-decoration: underline;
   cursor: pointer;
 }

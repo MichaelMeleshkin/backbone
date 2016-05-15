@@ -28,14 +28,25 @@
   }
 
   li {
-    a {
-      text-shadow: 1px 1px 0px #FFF;
+    a,
+    .link {
+      text-shadow: 1px 1px 0 #FFF;
     }
 
     padding: 10px;
     background: #EEE;
     border: 1px solid;
     border-color: #FFF #BBB #BBB #BBB;
+
+    .shared {
+      list-style: none;
+      padding-left: 10px;
+
+      li {
+        padding: 5px 0 0 0;
+        border: none;
+      }
+    }
 
     &:first-child {
       border-top: 1px solid #BBB;

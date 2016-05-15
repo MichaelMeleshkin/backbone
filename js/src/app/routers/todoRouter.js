@@ -1,8 +1,8 @@
 App.Router.TodoRouter = Backbone.Router.extend({
     routes: {
         ''          :'readAll',
-        'show/'     :'readAll',
-        'create/'   :'create',
+        'show'      :'readAll',
+        'create'    :'create',
         'show/:id'  :'readTodo',
         'edit/:id'  :'editTodo',
         '*notFound' :'defaultTodo'

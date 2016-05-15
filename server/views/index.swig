@@ -1,5 +1,6 @@
 {% extends 'main.swig' %}
 {% block body %}
+    <a href="/logout">Logout</a>
     <div class="tasks-category-wrap">
         <label for="tasks-category">Category:</label>
         <select name="" id="tasks-category">

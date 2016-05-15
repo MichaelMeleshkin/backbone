@@ -50,10 +50,10 @@
                 </div>
             </script>
             <script id="todoBackToMainLinkTemplate" type="text/template">
-                <a class="m10 iblock hidden" href="#show/">Back to all</a>
+                <a class="m10 iblock hidden" href="#show">Back to all</a>
             </script>
             <script id="todoCreateLinkTemplate" type="text/template">
-                <a class="m10 iblock hidden" href="#create/">Create new task</a>
+                <a class="m10 iblock hidden" href="#create">Create new task</a>
             </script>
         {% endblock %}
     </head>

@@ -9,6 +9,11 @@ function routes(app) {
         res.render('login');
     });
 
+    app.get('/logout', function (req, res) {
+        req.session.destroy();
+        res.redirect('login');
+    });
+
     app.get('/', checkAuth, function (req, res) {
         res.render('index');
     });
@@ -89,7 +94,7 @@ function routes(app) {
 
     app.delete('/collection/:id', checkAuth, function (req, res) {
         db.connect(function (collection, db) {
-            collection.findOneAndDelete({_id: ObjectID(req.params.id)}).toArray(function(err, items) {
+            collection.findOneAndDelete({_id: ObjectID(req.params.id)}, function(err, items) {
                 if (err) throw err;
 
                 db.close();
