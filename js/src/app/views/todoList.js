@@ -7,6 +7,7 @@ App.View.TodoListView = Backbone.View.extend({
     createNewLinkTemplate: '#todoCreateLinkTemplate',
     editTodoTemplate: '#todoEditTemplate',
     backToMainTemplate: '#todoBackToMainLinkTemplate',
+    sharedForTemplate: '#todoSharedForTemplate',
     additionalTemplate: '',
 
     initialize: function() {
@@ -15,6 +16,9 @@ App.View.TodoListView = Backbone.View.extend({
         App.Router.Events.on('showAll', this.renderAll, this);
         App.Router.Events.on('show', this.renderByID, this);
         App.Router.Events.on('edit', this.editByID, this);
+        // App.Router.Events.on('addShare', this.addingShares, this);
+        
+        App.Router.Events.on('share', this.shareByID, this);
 
         $( '#tasks-category' ).on('change', function() {
             App.Router.Events.trigger('showAll');
@@ -66,7 +70,7 @@ App.View.TodoListView = Backbone.View.extend({
     renderByID: function(id) {
         var model = this.collection.get(id);
         if (!model) {
-            App.Router.todoRouter.navigate('show/', true);
+            App.Router.todoRouter.navigate('show', true);
         } else {
             var todoFullView = new App.View.TodoFullView({model: model});
 
@@ -89,5 +93,37 @@ App.View.TodoListView = Backbone.View.extend({
     destroyed: function() {
         this.$el.empty();
         $('<li/>').text('Task has been deleted').delay(1500).fadeOut(500).appendTo(this.$el);
+    },
+
+    shareByID: function (id) {
+        var model = this.collection.get(id);
+
+        var shareAddingForm = new App.View.TodoShareAddingFormView({model: model});
+        this.$el.html( shareAddingForm.render().$el );
+        this.additionalTemplate = this.backToMainTemplate;
+
+        this.render();
+
+        shareAddingForm.renderShareList();
+        shareAddingForm.delegateEvents();
     }
+
+    // addingShares: function () {
+    //     this.$el.empty();
+    //     var form = new App.View.TodoShareAddingFormView();
+    //     this.$el.append(form.render().el);
+    //
+    //     this.collection.each(this.renderOneShare, this);
+    //
+    //     this.render();
+    //     form.delegateEvents();
+    //     return this;
+    // },
+    // renderOneShare: function(todo) {
+    //     var todoView = new App.View.TodoShareAddingView({model: todo});
+    //     this.$el.append(todoView.render().el);
+    // },
+    // addShares: function () {
+    //     console.log('add');
+    // }
 });

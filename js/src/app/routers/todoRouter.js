@@ -5,6 +5,7 @@ App.Router.TodoRouter = Backbone.Router.extend({
         'create'    :'create',
         'show/:id'  :'readTodo',
         'edit/:id'  :'editTodo',
+        'share/:id'  :'shareTodo',
         '*notFound' :'defaultTodo'
     },
     readAll: function() {
@@ -19,6 +20,11 @@ App.Router.TodoRouter = Backbone.Router.extend({
     editTodo: function(id) {
         App.Router.Events.trigger('edit', id);
     },
+
+    shareTodo: function (id) {
+        App.Router.Events.trigger('share', id);
+    },
+
     defaultTodo: function(notFound) {
         var msg = '<h1>404 Page not found<br/><h3>URL: '+ notFound +'</h3></h1>';
         $('body').html(msg);

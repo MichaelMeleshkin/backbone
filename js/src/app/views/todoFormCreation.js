@@ -34,10 +34,6 @@ App.View.TodoFormCreation = Backbone.View.extend({
 
         this.collection.add(todo);
         todo.save();
-        this.collection.fetch();
-        var id = this.collection.get(todo).id;
-        if (id) {
-            App.Router.Events.trigger('show', id);
-        }
+        App.Router.todoRouter.navigate('show', true);
     }
 });

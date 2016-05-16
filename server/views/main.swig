@@ -10,6 +10,21 @@
             <script id="todoListItemTemplate" type="text/template">
                 <a href="#show/<%= id %>"><%= title ? title : 'Empty title' %></a>
                 <a href="#edit/<%= id %>">Edit</a>
+                <a href="#share/<%= id %>">Share</a>
+            </script>
+            <script id="todoShareAddingTemplate" type="text/template">
+                Task name: <a href="#show/<%= id %>"><%= title ? title : 'Empty title' %></a>
+                <div><label>Enter user name: <input class="username" type="text"></label></div>
+                <button class="share">Share</button>
+                <ul id="shareList"></ul>
+            </script>
+            <script id="sharedTitle" type="text/template">
+                <div class="shareListTitle">Shared for:</div>
+            </script>
+            <script id="todoSharedListTemplate" type="text/template">
+                <div>Available for: <%= name %></div>
+                <div>Already seen: <%= notification ? 'Not yet' : 'Yes' %></div>
+                <button class="remove">Delete</button>
             </script>
             <script id="todoFullTemplate" type="text/template">
                 <div>Title: <%= title %></div>

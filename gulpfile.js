@@ -26,6 +26,7 @@ gulp.task('js', function() {
             "./js/lib/underscore.js",
             "./js/lib/backbone.js",
             "./js/lib/backbone.localStorage.js",
+            "./js/lib/backbone-relational.js",
             "./js/src/namespace.js",
             "./js/src/app/events/**/*.js",
             "./js/src/app/models/**/*.js",

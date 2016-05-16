@@ -1,6 +1,7 @@
-App.Model.Share = Backbone.Model.extend({
+App.Model.Share = Backbone.RelationalModel.extend({
     defaults: {
         name: null,
-        notification: true
+        notification: true,
+        remove: false
     }
 });
