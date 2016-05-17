@@ -19,7 +19,7 @@ App.View.TodoShareAddingFormView = Backbone.View.extend({
     },
     addShares: function () {
         var username = this.$('.username').val().trim();
-        var isModelExist = this.model.get('share').find(function(model) {
+        var isModelExist = this.collection.find(function(model) {
             return model.get('name') === username;
         });
 
