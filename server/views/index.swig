@@ -12,4 +12,5 @@
         </select>
     </div>
     <div id="content" class="content-wrapper"></div>
+    <div id="notification" class="notification-wrapper"></div>
 {% endblock %}

@@ -4,6 +4,7 @@
     "url": "mongodb://127.0.0.1:27017/todoCollection",
     "collection": "todo",
     "users": "users",
+    "notifications": "notifications",
     "session": {
       "url": "mongodb://127.0.0.1:27017/todoSession",
       "collection": "session"

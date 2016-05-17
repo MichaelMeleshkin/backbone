@@ -1,11 +1,12 @@
 App.Model.Todo = Backbone.RelationalModel.extend({
     defaults: {
         status: null,
-        id: this.cid
+        id: this.cid,
+        sharedTask: false
     },
     relations: [
         {
-            type: Backbone.HasMany, // Use the type, or the string 'HasOne' or 'HasMany'.
+            type: Backbone.HasMany,
             key: 'share',
             relatedModel: 'App.Model.Share',
             collectionType: 'App.Collection.TodoList',

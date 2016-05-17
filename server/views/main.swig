@@ -10,7 +10,9 @@
             <script id="todoListItemTemplate" type="text/template">
                 <a href="#show/<%= id %>"><%= title ? title : 'Empty title' %></a>
                 <a href="#edit/<%= id %>">Edit</a>
+                <% if (!sharedTask) { %>
                 <a href="#share/<%= id %>">Share</a>
+                <% } %>
             </script>
             <script id="todoShareAddingTemplate" type="text/template">
                 Task name: <a href="#show/<%= id %>"><%= title ? title : 'Empty title' %></a>
@@ -23,15 +25,25 @@
             </script>
             <script id="todoSharedListTemplate" type="text/template">
                 <div>Available for: <%= name %></div>
-                <div>Already seen: <%= notification ? 'Not yet' : 'Yes' %></div>
                 <button class="remove">Delete</button>
+            </script>
+            <script id="todoSharedNotificationTemplate" type="text/template">
+                You have next notifications:
+                <ul id="notificationList"></ul>
+                <button class="confirm">Confirm</button>
+            </script>
+            <script id="todoSharedNotificationItemTemplate" type="text/template">
+                <%= isNew ? 'You have received new task:' : 'Task was removed:' %>
+                <%= taskName ? taskName : 'Empty title' %>
             </script>
             <script id="todoFullTemplate" type="text/template">
                 <div>Title: <%= title %></div>
                 <div>Date: <%= date %></div>
                 <div>Description:</div>
                 <pre class="info"><%= description %></pre>
+                <% if (!sharedTask) { %>
                 <button class="delete">Delete</button>
+                <% } %>
                 <button class="complete">Complete</button>
             </script>
             <script id="todoEditTemplate" type="text/template">

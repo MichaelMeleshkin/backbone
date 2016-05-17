@@ -1,5 +1,6 @@
 .m10{margin:10px}.iblock{display:inline-block}a,.link{color:#333;text-shadow:1px 1px 0 #EEE;text-decoration:underline;cursor:pointer}
-.container{margin:10px;padding:10px;background:#EEE;border-radius:5px;border:1px solid #BBB}
+.notification-wrapper>div{padding:10px;background:#EEE;border:1px solid #BBB;border-radius:5px;margin:10px}
+.notification-wrapper>div ul{padding-left:20px;list-style:disc}.container{margin:10px;padding:10px;background:#EEE;border-radius:5px;border:1px solid #BBB}
 .ui-datepicker{display:none;padding:10px;border:1px solid #BBB;background:#EEE;border-radius:5px}
 .ui-datepicker-next{float:right}#todoList{margin:0 10px;padding:0;list-style:none}
 #todoList pre{margin:0}#todoList li{padding:10px;background:#EEE;border:1px solid;border-color:#FFF #BBB #BBB #BBB}

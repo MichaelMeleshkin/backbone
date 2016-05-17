@@ -10,8 +10,17 @@ App.View.TodoShareAddingView = Backbone.View.extend({
         return this;
     },
     remove: function () {
-        console.log(this.model);
+        $( '.shareListTitle' ).remove();
         var parent = this.model.get('parent');
+
+        var notification = new App.Model.Notification({
+            username: this.model.get('name'),
+            taskName: this.model.get('parent').get('title'),
+            isNew: false
+        });
+        this.notificationCollection.add(notification);
+        notification.save();
+        
         this.model.destroy();
         parent.save();
     }

@@ -2,7 +2,6 @@ App.View.TodoShareListView = Backbone.View.extend({
     tagName: 'ul',
     id: 'shareList',
     initialize: function() {
-        console.log(this.collection);
         App.Router.Events.on('showShareAll', this.render, this);
     },
     render: function() {

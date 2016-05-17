@@ -14,7 +14,6 @@ App.View.TodoShareAddingFormView = Backbone.View.extend({
     render: function() {
         var template = _.template( $(this.template).html() );
         this.$el.html( template(this.model.toJSON()) );
-        // this.renderShareList();
         return this;
     },
     addShares: function () {
@@ -29,6 +28,15 @@ App.View.TodoShareAddingFormView = Backbone.View.extend({
             });
 
             this.collection.add(share);
+
+            var notification = new App.Model.Notification({
+                username: share.get('name'),
+                taskName: this.model.get('title'),
+                isNew: true
+            });
+            this.notificationCollection.add(notification);
+            notification.save();
+
             this.model.save();
         }
     },
@@ -47,6 +55,7 @@ App.View.TodoShareAddingFormView = Backbone.View.extend({
             this.renderShareListTitle();
         }
         var renderShareItem = new App.View.TodoShareAddingView({model: model});
+        renderShareItem.notificationCollection = this.notificationCollection;
         this.$( this.shareList ).append( renderShareItem.render().$el );
         renderShareItem.delegateEvents();
     }

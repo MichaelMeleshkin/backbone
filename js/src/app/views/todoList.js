@@ -16,7 +16,6 @@ App.View.TodoListView = Backbone.View.extend({
         App.Router.Events.on('showAll', this.renderAll, this);
         App.Router.Events.on('show', this.renderByID, this);
         App.Router.Events.on('edit', this.editByID, this);
-        // App.Router.Events.on('addShare', this.addingShares, this);
         
         App.Router.Events.on('share', this.shareByID, this);
 
@@ -99,6 +98,8 @@ App.View.TodoListView = Backbone.View.extend({
         var model = this.collection.get(id);
 
         var shareAddingForm = new App.View.TodoShareAddingFormView({model: model});
+        shareAddingForm.notificationCollection = this.notificationCollection;
+
         this.$el.html( shareAddingForm.render().$el );
         this.additionalTemplate = this.backToMainTemplate;
 
@@ -107,23 +108,4 @@ App.View.TodoListView = Backbone.View.extend({
         shareAddingForm.renderShareList();
         shareAddingForm.delegateEvents();
     }
-
-    // addingShares: function () {
-    //     this.$el.empty();
-    //     var form = new App.View.TodoShareAddingFormView();
-    //     this.$el.append(form.render().el);
-    //
-    //     this.collection.each(this.renderOneShare, this);
-    //
-    //     this.render();
-    //     form.delegateEvents();
-    //     return this;
-    // },
-    // renderOneShare: function(todo) {
-    //     var todoView = new App.View.TodoShareAddingView({model: todo});
-    //     this.$el.append(todoView.render().el);
-    // },
-    // addShares: function () {
-    //     console.log('add');
-    // }
 });
