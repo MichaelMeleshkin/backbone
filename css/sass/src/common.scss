@@ -14,6 +14,12 @@
   }
 }
 
+.remove-user {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
 .ui-datepicker-next {
   float: right;
 }
@@ -28,7 +34,8 @@ $noDate: lightyellow;
 .creation,
 #loginForm,
 .notification,
-.ui-datepicker {
+.ui-datepicker,
+.sticker {
   margin: 10px;
   background: #FFF center top no-repeat;
   padding: 37px 10px 10px 10px;
@@ -176,6 +183,7 @@ $noDate: lightyellow;
 .login,
 .confirm,
 .new,
+.remove-user,
 .back,
 .logout {
   display: inline-block;
@@ -192,7 +200,8 @@ $noDate: lightyellow;
 .confirm,
 .new,
 .back,
-.logout {
+.logout,
+.remove-user {
   height: 64px;
   width: 64px;
 }
@@ -237,4 +246,8 @@ $noDate: lightyellow;
 
 .logout {
   @include bg('actions', 'logout');
+}
+
+.remove-user {
+  @include bg('actions', 'removeUser');
 }

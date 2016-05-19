@@ -90,6 +90,7 @@ App.View.TodoListView = Backbone.View.extend({
         this.additionalTemplate = this.backToMainTemplate;
         this.render();
         todoEditView.delegateEvents();
+        $('.date').datepicker();
     },
     destroyed: function() {
         this.$el.empty();

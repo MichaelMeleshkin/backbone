@@ -30,6 +30,8 @@ function routes(app) {
                         req.session.uname = user.name;
 
                         res.redirect('/');
+                        console.log(req.session.uid);
+                        console.log('redirect1');
 
                         database.close();
                     }
@@ -38,8 +40,8 @@ function routes(app) {
 
                     collection.insert({name: req.body.username, pass: cryptoPass}, function (err, user) {
                         if (err) throw err;
-                        req.session.uid = user._id;
-                        req.session.uname = user.name;
+                        req.session.uid = user.ops[0]._id;
+                        req.session.uname = user.ops[0].name;
 
                         res.redirect('/');
 
@@ -49,6 +51,72 @@ function routes(app) {
             });
         });
 
+    });
+
+    app.get('/remove', checkAuth, function (req, res) {
+        db.connect(function (collection, database) {
+            collection.find({uid: req.session.uid}).toArray(function(err, result) {
+                if (err) throw err;
+
+                var items = result;
+
+                collection.deleteMany({uid: req.session.uid}, function(err, result) {
+                    if (err) throw err;
+
+                    var isAtLeastOneShared = false;
+                    var arr = [];
+                    items.forEach(function (item) {
+                        if (item.share.length) {
+                            isAtLeastOneShared = true;
+                            item.share.forEach(function (share) {
+
+                                arr.push({
+                                    username: share.name,
+                                    taskName: item.title,
+                                    isNew: false
+                                });
+
+                                console.log(share.name + " | " + item.title);
+                            });
+
+                        }
+                    });
+
+                    if (isAtLeastOneShared) {
+                        db.connectNotification(function (collection, database) {
+                            collection.insert(arr , null, function(err, items) {
+                                if (err) throw err;
+
+                                db.connectUsers(function (collection, database) {
+                                    collection.findOneAndDelete({_id: ObjectID(req.session.uid)}, function (err, user) {
+                                        if (err) throw err;
+
+                                        database.close();
+
+                                        req.session.destroy();
+                                        res.render('remove');
+                                    });
+                                });
+                            });
+                        });
+                    } else {
+
+                        db.connectUsers(function (collection, database) {
+                            collection.findOneAndDelete({_id: ObjectID(req.session.uid)}, function (err, user) {
+                                if (err) throw err;
+
+                                database.close();
+
+                                req.session.destroy();
+                                res.render('remove');
+                            });
+                        });
+
+                    }
+
+                });
+            });
+        });
     });
     
     /* COLLECTION */

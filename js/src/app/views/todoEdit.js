@@ -21,7 +21,6 @@ App.View.TodoEditView = Backbone.View.extend({
     render: function() {
         var template = _.template( $(this.template).html() );
         this.$el.html( template(this.model.toJSON()) );
-        this.$('.date').datepicker();
         return this;
     }
 });
