@@ -1,15 +1,18 @@
 {% extends 'main.swig' %}
 {% block body %}
-    <form action="/login" method="POST" name="loginForm">
-        <label for="username">User Name</label>
-        <input id="username" name="username" type="text" />
+    <form id="loginForm" class="pin-7" action="/login" method="POST" name="loginForm">
+        <div>
+            <label for="username">User Name</label>
+            <input id="username" name="username" type="text" />
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" />
+        </div>
 
-        <label for="password">Password</label>
-        <input id="password" name="password" type="password" />
-
-        <input type="submit" value="Login"/>
+        <input class="login" type="submit" value=""/>
+        <div class="error"></div>
     </form>
-    <div class="error"></div>
     <script type="text/javascript">
         $(document.forms['loginForm']).on('submit', function() {
             var form = $(this);

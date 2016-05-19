@@ -3,7 +3,9 @@ App.View.TodoListView = Backbone.View.extend({
     id: 'todoList',
     categories: '#tasksCategoryTemplate',
 
+    control: '#control',
     content: '#content',
+    listTypeCont: '#listType',
     createNewLinkTemplate: '#todoCreateLinkTemplate',
     editTodoTemplate: '#todoEditTemplate',
     backToMainTemplate: '#todoBackToMainLinkTemplate',
@@ -11,22 +13,21 @@ App.View.TodoListView = Backbone.View.extend({
     additionalTemplate: '',
 
     initialize: function() {
-        this.collection.on('sync', this.renderAll, this);
+        this.collection.on('sync', function () {
+            App.Router.todoRouter.navigate('show', true);
+        }, this);
         this.collection.on('destroy', this.destroyed, this);
         App.Router.Events.on('showAll', this.renderAll, this);
         App.Router.Events.on('show', this.renderByID, this);
         App.Router.Events.on('edit', this.editByID, this);
         
         App.Router.Events.on('share', this.shareByID, this);
-
-        $( '#tasks-category' ).on('change', function() {
-            App.Router.Events.trigger('showAll');
-        });
     },
     render: function() {
         var $content = $( this.content ).empty();
-        $content.append( $( this.additionalTemplate ).html() );
+        $( this.control ).html( $( this.additionalTemplate ).html() );
         $content.append( $( this.$el ) );
+        $( this.listTypeCont ).empty();
     },
     renderAll: function() {
         this.$el.empty();
@@ -34,37 +35,38 @@ App.View.TodoListView = Backbone.View.extend({
 
         this.additionalTemplate = this.createNewLinkTemplate;
         this.render();
+
+        var listType = new App.View.TodoListTypeView();
+        $( this.listTypeCont ).html( listType.render().$el );
+        listType.renderAll();
+
         return this;
     },
     renderNew: function(todo) {
-        var type = +$('#tasks-category').val();
         var todoView = new App.View.TodoView({model: todo});
 
         var date = todo.get('date').split('/');
-        var now = new Date();
+        var $todo = '';
+        if (date.length == 3) {
+            var now = new Date();
 
-        if (type == 0) {
-            this.$el.append( todoView.render().el );
-        } else if (type == 1) {
             if (+date[0] == now.getMonth() + 1 && +date[1] == now.getDate() && +date[2] == now.getFullYear()) {
-                this.$el.append( todoView.render().el );
+                $todo = todoView.render().$el.addClass('today');
             }
-        } else if (type == 2) {
             if (+date[0] == now.getMonth() + 1 && +date[1] > now.getDate() && +date[2] == now.getFullYear()) {
-                this.$el.append( todoView.render().el );
+                $todo = todoView.render().$el.addClass('planned');
             }
-        } else if (type == 3) {
-            if (todo.get('status') == 'completed') {
-                this.$el.append( todoView.render().el );
-            }
-        } else if (type == 4) {
             if (+date[0] == now.getMonth() + 1 && +date[1] < now.getDate() && +date[2] == now.getFullYear()) {
-                this.$el.append( todoView.render().el );
+                $todo = todoView.render().$el.addClass('skipped');
             }
+        } else {
+            $todo = todoView.render().$el.addClass('no-date');
+        }
+        if (todo.get('status') == 'completed') {
+            $todo = todoView.render().$el.addClass('completed');
         }
 
-
-
+        this.$el.append( $todo );
     },
     renderByID: function(id) {
         var model = this.collection.get(id);

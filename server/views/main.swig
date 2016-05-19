@@ -9,28 +9,28 @@
         {% block templates %}
             <script id="todoListItemTemplate" type="text/template">
                 <a href="#show/<%= id %>"><%= title ? title : 'Empty title' %></a>
-                <a href="#edit/<%= id %>">Edit</a>
+                <a class="edit" href="#edit/<%= id %>"></a>
                 <% if (!sharedTask) { %>
-                <a href="#share/<%= id %>">Share</a>
+                <a class="share" href="#share/<%= id %>"></a>
                 <% } %>
             </script>
             <script id="todoShareAddingTemplate" type="text/template">
                 Task name: <a href="#show/<%= id %>"><%= title ? title : 'Empty title' %></a>
                 <div><label>Enter user name: <input class="username" type="text"></label></div>
-                <button class="share">Share</button>
+                <div role="button" class="share"></div>
                 <ul id="shareList"></ul>
             </script>
             <script id="sharedTitle" type="text/template">
                 <div class="shareListTitle">Shared for:</div>
             </script>
             <script id="todoSharedListTemplate" type="text/template">
-                <div>Available for: <%= name %></div>
-                <button class="remove">Delete</button>
+                <div><%= name %></div>
+                <div role="button" class="remove"></div>
             </script>
             <script id="todoSharedNotificationTemplate" type="text/template">
                 You have next notifications:
                 <ul id="notificationList"></ul>
-                <button class="confirm">Confirm</button>
+                <div role="button" class="confirm"></div>
             </script>
             <script id="todoSharedNotificationItemTemplate" type="text/template">
                 <%= isNew ? 'You have received new task:' : 'Task was removed:' %>
@@ -42,12 +42,11 @@
                 <div>Description:</div>
                 <pre class="info"><%= description %></pre>
                 <% if (!sharedTask) { %>
-                <button class="delete">Delete</button>
+                <div role="button" class="delete"></div>
                 <% } %>
-                <button class="complete">Complete</button>
+                <div role="button" class="complete"></div>
             </script>
             <script id="todoEditTemplate" type="text/template">
-                Edit task
                 <div>
                     <label>Title: <input class="title" type="text" value="<%= title %>"/></label>
                 </div>
@@ -55,14 +54,13 @@
                     <label>Date: <input class="date" type="text" value="<%= date %>"/></label>
                 </div>
                 <div>
-                    <label><div>Description: </div><textarea class="description" cols="30" rows="2"><%= description %></textarea></label>
+                    <label>Description: <br /><textarea class="description" cols="22" rows="3"><%= description %></textarea></label>
                 </div>
                 <div>
-                    <button class="edit">Edit</button>
+                    <div role="button" class="edit"></div>
                 </div>
             </script>
             <script id="todoCreateTemplate" type="text/template">
-                Task creation
                 <div>
                     <label>Title: <input class="title" type="text"/></label>
                 </div>
@@ -70,17 +68,17 @@
                     <label>Date: <input class="date" type="text"/></label>
                 </div>
                 <div>
-                    <label><div>Description: </div><textarea class="description" cols="30" rows="2"></textarea></label>
+                    <label>Description: <br /><textarea class="description" cols="22" rows="3"></textarea></label>
                 </div>
                 <div>
-                    <button class="create">Create</button>
+                    <div role="button" class="create"></div>
                 </div>
             </script>
             <script id="todoBackToMainLinkTemplate" type="text/template">
-                <a class="m10 iblock hidden" href="#show">Back to all</a>
+                <a class="m20 iblock hidden back" href="#show"></a>
             </script>
             <script id="todoCreateLinkTemplate" type="text/template">
-                <a class="m10 iblock hidden" href="#create">Create new task</a>
+                <a class="m20 iblock hidden new" href="#create"></a>
             </script>
         {% endblock %}
     </head>

@@ -9,7 +9,6 @@ App.View.TodoShareAddingFormView = Backbone.View.extend({
     initialize: function () {
         this.collection = this.model.get('share');
         this.collection.on('add', this.renderShareItem, this);
-        this.collection.on('remove', this.renderShareList, this);
     },
     render: function() {
         var template = _.template( $(this.template).html() );

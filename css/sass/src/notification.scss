@@ -1,0 +1,13 @@
+.notification {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 24px;
+  width: auto;
+  background-color: #e3ff94;
+}
+
+.notification .confirm {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}

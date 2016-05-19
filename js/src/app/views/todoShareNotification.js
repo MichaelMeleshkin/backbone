@@ -1,5 +1,6 @@
 App.View.TodoShareNotificationView = Backbone.View.extend({
     tagName: 'div',
+    className: 'notification pin-11',
     template: '#todoSharedNotificationTemplate',
     content: '#notification',
     notificationList: '#notificationList',

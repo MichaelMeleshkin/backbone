@@ -3,6 +3,7 @@ App.View.TodoView = Backbone.View.extend({
     template: '#todoListItemTemplate',
     initialize: function() {
         this.render();
+        this.$el.addClass('pin-' + Math.round(Math.random()*17 + 1));
     },
     render: function() {
         var template = _.template( $(this.template).html() );

@@ -1,0 +1,240 @@
+@mixin bg ($dir, $img, $h:left, $v:top) {
+  background: url(/img/#{$dir}/#{$img}.png) #{$h} #{$v} no-repeat;
+}
+
+.top-panel {
+  position: relative;
+  text-align: center;
+
+  #listType {
+    position: absolute;
+    top: 0;
+    left: 104px;
+    right: 104px;
+  }
+}
+
+.ui-datepicker-next {
+  float: right;
+}
+
+$today: lightpink;
+$planned: lightsalmon;
+$completed: lightcyan;
+$skipped: lightgreen;
+$noDate: lightyellow;
+
+#todoList > li,
+.creation,
+#loginForm,
+.notification,
+.ui-datepicker {
+  margin: 10px;
+  background: #FFF center top no-repeat;
+  padding: 37px 10px 10px 10px;
+  min-height: 203px;
+  width: 230px;
+  box-shadow: 1px 3px 10px 1px #333;
+  border-radius: 2px 7px 5px 10px;
+
+  &.today {
+    background-color: $today;
+  }
+  &.planned {
+    background-color: $planned;
+  }
+  &.skipped {
+    background-color: $skipped;
+  }
+  &.no-date {
+    background-color: $noDate;
+  }
+  &.completed {
+    background-color: $completed;
+  }
+
+  @for $i from 1 through 18 {
+    &.pin-#{$i} {
+      background-image: url(/img/pin/pin#{$i}.png);
+      transform: rotate(unquote((-9+$i)+deg));
+    }
+  }
+}
+
+.ui-datepicker {
+  display: none;
+  min-height: 0;
+  width: 152px;
+  transform: rotate(-3deg);
+  background-image: url(/img/pin/pin1.png);
+}
+
+#shareList {
+  > li {
+    padding-left: 64px;
+    min-height: 64px;
+    margin-bottom: 10px;
+
+    @for $i from 1 through 15 {
+      &.person-#{$i} {
+        background: url(/img/people/person#{$i}.png) left top no-repeat;
+      }
+    }
+  }
+}
+
+.types {
+  display: inline-block;
+  padding-right: 80px;
+  margin: 10px 0;
+  white-space: nowrap;
+
+  .all-tasks {
+    @include bg('labels', 'allTasks', 0, -23px);
+    transform: rotate(5deg);
+  }
+
+  .today {
+    @include bg('labels', 'today', 0, -23px);
+    transform: rotate(-4deg);
+  }
+
+  .planned {
+    @include bg('labels', 'planned', 0, -23px);
+    transform: rotate(3deg);
+  }
+
+  .skipped {
+    @include bg('labels', 'skipped', 0, -23px);
+    transform: rotate(-5deg);
+  }
+
+  .no-date {
+    @include bg('labels', 'noDate', 0, -23px);
+    transform: rotate(4deg);
+  }
+
+  .completed {
+    @include bg('labels', 'completed', 0, -23px);
+    transform: rotate(-3deg);
+  }
+
+  .all-tasks,
+  .today,
+  .planned,
+  .skipped,
+  .no-date,
+  .completed {
+    height: 58px;
+    width: 102px;
+    padding-left: 26px;
+    padding-top: 24px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    margin-right: -80px;
+    transition: margin-right 1s;
+
+    &:hover {
+      margin-right: 0;
+    }
+
+    &:last-child:hover {
+      margin-right: -80px;
+    }
+  }
+}
+
+#todoList {
+  padding-left: 10px;
+  padding-bottom: 180px;
+
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+  > li {
+    float: left;
+    margin-bottom: -160px;
+  }
+}
+
+.new,
+.back {
+  float: left;
+}
+
+.edit,
+.share,
+.delete,
+.remove,
+.notification .confirm,
+.create,
+.complete,
+.login,
+.confirm,
+.new,
+.back,
+.logout {
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+  opacity: 0.75;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.confirm,
+.new,
+.back,
+.logout {
+  height: 64px;
+  width: 64px;
+}
+
+.edit {
+  @include bg('actions', 'edit');
+}
+
+.share {
+  @include bg('actions', 'share');
+}
+
+.delete,
+.remove,
+.notification .confirm {
+  @include bg('actions', 'delete');
+}
+
+.create {
+  @include bg('actions', 'done');
+}
+
+.complete {
+  @include bg('actions', 'complete');
+}
+
+.login {
+  @include bg('actions', 'login');
+}
+
+.confirm {
+  @include bg('actions', 'confirm');
+}
+
+.new {
+  @include bg('actions', 'create');
+}
+
+.back {
+  @include bg('actions', 'back');
+}
+
+.logout {
+  @include bg('actions', 'logout');
+}

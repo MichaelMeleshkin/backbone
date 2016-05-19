@@ -10,6 +10,7 @@ App.View.TodoFullView = Backbone.View.extend({
             this.$el.empty();
             $('<span/>').text('Task has been completed').appendTo(this.$el.delay(1500).fadeOut(500));
         }, this);
+        this.$el.addClass('pin-' + Math.round(Math.random()*17 + 1));
     },
     deleteTodo: function() {
         this.model.destroy();

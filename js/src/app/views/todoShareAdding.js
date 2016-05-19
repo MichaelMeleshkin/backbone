@@ -2,20 +2,23 @@ App.View.TodoShareAddingView = Backbone.View.extend({
     tagName: 'li',
     template: '#todoSharedListTemplate',
     events: {
-        'click .remove' : 'remove'
+        'click .remove' : 'removePerson'
+    },
+    initialize: function () {
+        this.parent = this.model.get('parent');
     },
     render: function() {
         var template = _.template( $(this.template).html() );
         this.$el.html( template(this.model.toJSON()) );
+        this.$el.addClass('person-' + Math.round(Math.random()*14 + 1));
         return this;
     },
-    remove: function () {
-        $( '.shareListTitle' ).remove();
+    removePerson: function () {
         var parent = this.model.get('parent');
 
         var notification = new App.Model.Notification({
             username: this.model.get('name'),
-            taskName: this.model.get('parent').get('title'),
+            taskName: parent.get('title'),
             isNew: false
         });
         this.notificationCollection.add(notification);
@@ -23,5 +26,6 @@ App.View.TodoShareAddingView = Backbone.View.extend({
         
         this.model.destroy();
         parent.save();
+        this.remove();
     }
 });

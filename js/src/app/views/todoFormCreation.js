@@ -1,8 +1,9 @@
 App.View.TodoFormCreation = Backbone.View.extend({
     id: 'container',
-    className: 'container',
+    className: 'creation pin-' + Math.round(Math.random()*17 + 1),
     template: "#todoCreateTemplate",
 
+    control: '#control',
     content: '#content',
     backToMainTemplate: '#todoBackToMainLinkTemplate',
 
@@ -19,8 +20,8 @@ App.View.TodoFormCreation = Backbone.View.extend({
 
         $( this.content )
             .empty()
-            .append( $( this.backToMainTemplate ).html() )
             .append( this.$el );
+        $( this.control ).html( $( this.backToMainTemplate ).html() );
 
         this.delegateEvents();
         this.$('.date').datepicker();

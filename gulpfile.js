@@ -9,7 +9,7 @@ var gulp = require('gulp'),
     livereload = require('gulp-livereload');
 
 gulp.task('sass', function () {
-    return sass('./css/sass/**/*.scss')
+    return sass("./css/sass/includes.scss")
         .on('error', sass.logError)
         .pipe(concatCss("main.css"))
         .pipe(uglifycss({
