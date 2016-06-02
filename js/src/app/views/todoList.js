@@ -45,23 +45,40 @@ App.View.TodoListView = Backbone.View.extend({
     renderNew: function(todo) {
         var todoView = new App.View.TodoView({model: todo});
 
-        var date = todo.get('date').split('/');
         var $todo = '';
-        if (date.length == 3) {
-            var now = new Date();
 
-            if (+date[0] == now.getMonth() + 1 && +date[1] == now.getDate() && +date[2] == now.getFullYear()) {
+        if (todo.get('date')) {
+
+            var date = todo.get('date').split('/'),
+                now = new Date(),
+                isCurrentMonth = +date[0] == now.getMonth() + 1,
+                isCurrentYear = +date[2] == now.getFullYear(),
+                isCurrentDay = +date[1] == now.getDate(),
+
+                isPlannedMonth = +date[0] > now.getMonth() + 1,
+                isPlannedYear = +date[2] > now.getFullYear(),
+                isPlannedDay = +date[1] > now.getDate(),
+
+                isSkippedMonth = +date[0] > now.getMonth() + 1,
+                isSkippedYear = +date[2] > now.getFullYear(),
+                isSkippedDay = +date[1] > now.getDate(),
+
+                isToday = ( isCurrentDay && isCurrentMonth && isCurrentYear ),
+                isPlanned = ( isPlannedYear || (isCurrentYear && isPlannedMonth) || (isCurrentYear && isCurrentMonth && isPlannedDay) ),
+                isSkipped = ( isSkippedYear || (isCurrentYear && isSkippedMonth) || (isCurrentYear && isCurrentMonth && isSkippedDay) );
+
+            if ( isToday ) {
                 $todo = todoView.render().$el.addClass('today');
-            }
-            if (+date[0] == now.getMonth() + 1 && +date[1] > now.getDate() && +date[2] == now.getFullYear()) {
+            } else if ( isPlanned ) {
                 $todo = todoView.render().$el.addClass('planned');
-            }
-            if (+date[0] == now.getMonth() + 1 && +date[1] < now.getDate() && +date[2] == now.getFullYear()) {
+            } else if ( isSkipped ) {
                 $todo = todoView.render().$el.addClass('skipped');
             }
+
         } else {
             $todo = todoView.render().$el.addClass('no-date');
         }
+
         if (todo.get('status') == 'completed') {
             $todo = todoView.render().$el.addClass('completed');
         }

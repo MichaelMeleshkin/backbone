@@ -8,14 +8,13 @@ App.View.TodoFormCreation = Backbone.View.extend({
     backToMainTemplate: '#todoBackToMainLinkTemplate',
 
     events : {
-        'click .create' : 'createTodo'
+        'click .create' : 'createTodo',
+        'focus .date' : 'clearValidation'
     },
     initialize: function() {
         App.Router.Events.on('create', this.renderForm, this);
     },
     renderForm: function() {
-        var $wrap = $("<div/>");
-
         this.$el.html( $( this.template ).html() );
 
         $( this.content )
@@ -27,14 +26,29 @@ App.View.TodoFormCreation = Backbone.View.extend({
         this.$('.date').datepicker();
     },
     createTodo: function() {
-        var todo = new App.Model.Todo({
-            title: this.$('.title').val(),
-            date: this.$('.date').val(),
-            description: this.$('.description').val()
-        });
+        var date = this.$('.date').val(),
+            pattern = /\d{2}\/\d{2}\/\d{4}/,
+            isDateValid = pattern.test(date);
 
-        this.collection.add(todo);
-        todo.save();
-        this.collection.fetch();
+        if (date && isDateValid) {
+
+            var todo = new App.Model.Todo({
+                title: this.$('.title').val(),
+                date: date,
+                description: this.$('.description').val()
+            });
+
+            this.collection.add(todo);
+            todo.save();
+            this.collection.fetch();
+
+        } else {
+
+            this.$('.date').addClass('crossed');
+
+        }
+    },
+    clearValidation: function () {
+        this.$('.date').removeClass('crossed');
     }
 });

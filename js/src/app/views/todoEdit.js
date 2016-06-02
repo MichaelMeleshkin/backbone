@@ -2,7 +2,8 @@ App.View.TodoEditView = Backbone.View.extend({
     tagName: 'li',
     template: '#todoEditTemplate',
     events : {
-        'click .edit' : 'saveTodo'
+        'click .edit' : 'saveTodo',
+        'focus .date' : 'clearValidation'
     },
     initialize: function() {
         this.model.on('change', function() {
@@ -11,12 +12,27 @@ App.View.TodoEditView = Backbone.View.extend({
         this.$el.addClass('pin-' + Math.round(Math.random()*17 + 1));
     },
     saveTodo: function() {
-        this.model.set({
-            title: this.$('.title').val(),
-            date: this.$('.date').val(),
-            description: this.$('.description').val()
-        });
-        this.model.save();
+        var date = this.$('.date').val(),
+            pattern = /\d{2}\/\d{2}\/\d{4}/,
+            isDateValid = pattern.test(date);
+
+        if (date && isDateValid) {
+
+            this.model.set({
+                title: this.$('.title').val(),
+                date: this.$('.date').val(),
+                description: this.$('.description').val()
+            });
+            this.model.save();
+
+        } else {
+
+            this.$('.date').addClass('crossed');
+
+        }
+    },
+    clearValidation: function () {
+        this.$('.date').removeClass('crossed');
     },
     render: function() {
         var template = _.template( $(this.template).html() );

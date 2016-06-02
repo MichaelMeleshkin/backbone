@@ -2,71 +2,71 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
 body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after{content:'';content:none}
 q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
-body{background:url("/img/main/n1.gif") left top repeat;font-family:'La-Belle-Aurore',Arial,sans-serif;font-size:19px;overflow-y:scroll}
+body{background:url("../../img/main/n1.gif") left top repeat;font-family:'La-Belle-Aurore',Arial,sans-serif;font-size:19px;overflow-y:scroll}
 .m10{margin:10px}.m20{margin:20px}.iblock{display:inline-block}.left{float:left}.right{float:right}
 .clearfix:after{content:'';display:block;clear:both}a,.link{color:#333;text-decoration:underline;cursor:pointer}
 @font-face{font-family:'La-Belle-Aurore';src:url("/fonts/labelleaurore/labelleaurore.eot");src:url("/fonts/labelleaurore/labelleaurore.eot?#iefix") format("embedded-opentype"),url("/fonts/labelleaurore/labelleaurore.woff2") format("woff2"),url("/fonts/labelleaurore/labelleaurore.woff") format("woff"),url("/fonts/labelleaurore/labelleaurore.ttf") format("truetype"),url("/fonts/labelleaurore/labelleaurore.svg#la_belle_auroreregular") format("svg");font-weight:normal;font-style:normal}
 label{color:#333;font-size:16px}input,textarea{font-family:'La-Belle-Aurore',Arial,sans-serif;background:transparent;border:0;outline:0;box-shadow:0 4px 5px -4px #000,inset 0 -2px 1px -2px #000;margin-bottom:7px;line-height:24px;font-size:19px;border-radius:5px}
 textarea{resize:none;padding:4px;overflow:hidden}.top-panel{position:relative;text-align:center}
-.top-panel #listType{position:absolute;top:0;left:104px;right:104px}.remove-user{position:absolute;right:0;bottom:0}
-.ui-datepicker-next{float:right}#todoList>li,.creation,#loginForm,.notification,.ui-datepicker,.sticker{margin:10px;background:#FFF center top no-repeat;padding:37px 10px 10px 10px;min-height:203px;width:230px;box-shadow:1px 3px 10px 1px #333;border-radius:2px 7px 5px 10px}
+.top-panel #listType{position:absolute;top:0;left:104px;right:104px}.crossed{text-decoration:line-through}
+.remove-user{position:absolute;right:0;bottom:0}.ui-datepicker-next{float:right}#todoList>li,.creation,#loginForm,.notification,.ui-datepicker,.sticker{margin:10px;background:#FFF center top no-repeat;padding:37px 10px 10px 10px;min-height:203px;width:230px;box-shadow:1px 3px 10px 1px #333;border-radius:2px 7px 5px 10px}
 #todoList>li.today,.creation.today,#loginForm.today,.notification.today,.ui-datepicker.today,.sticker.today{background-color:lightpink}
 #todoList>li.planned,.creation.planned,#loginForm.planned,.notification.planned,.ui-datepicker.planned,.sticker.planned{background-color:lightsalmon}
 #todoList>li.skipped,.creation.skipped,#loginForm.skipped,.notification.skipped,.ui-datepicker.skipped,.sticker.skipped{background-color:lightgreen}
 #todoList>li.no-date,.creation.no-date,#loginForm.no-date,.notification.no-date,.ui-datepicker.no-date,.sticker.no-date{background-color:lightyellow}
 #todoList>li.completed,.creation.completed,#loginForm.completed,.notification.completed,.ui-datepicker.completed,.sticker.completed{background-color:lightcyan}
-#todoList>li.pin-1,.creation.pin-1,#loginForm.pin-1,.notification.pin-1,.ui-datepicker.pin-1,.sticker.pin-1{background-image:url("/img/pin/pin1.png");transform:rotate(-8deg)}
-#todoList>li.pin-2,.creation.pin-2,#loginForm.pin-2,.notification.pin-2,.ui-datepicker.pin-2,.sticker.pin-2{background-image:url("/img/pin/pin2.png");transform:rotate(-7deg)}
-#todoList>li.pin-3,.creation.pin-3,#loginForm.pin-3,.notification.pin-3,.ui-datepicker.pin-3,.sticker.pin-3{background-image:url("/img/pin/pin3.png");transform:rotate(-6deg)}
-#todoList>li.pin-4,.creation.pin-4,#loginForm.pin-4,.notification.pin-4,.ui-datepicker.pin-4,.sticker.pin-4{background-image:url("/img/pin/pin4.png");transform:rotate(-5deg)}
-#todoList>li.pin-5,.creation.pin-5,#loginForm.pin-5,.notification.pin-5,.ui-datepicker.pin-5,.sticker.pin-5{background-image:url("/img/pin/pin5.png");transform:rotate(-4deg)}
-#todoList>li.pin-6,.creation.pin-6,#loginForm.pin-6,.notification.pin-6,.ui-datepicker.pin-6,.sticker.pin-6{background-image:url("/img/pin/pin6.png");transform:rotate(-3deg)}
-#todoList>li.pin-7,.creation.pin-7,#loginForm.pin-7,.notification.pin-7,.ui-datepicker.pin-7,.sticker.pin-7{background-image:url("/img/pin/pin7.png");transform:rotate(-2deg)}
-#todoList>li.pin-8,.creation.pin-8,#loginForm.pin-8,.notification.pin-8,.ui-datepicker.pin-8,.sticker.pin-8{background-image:url("/img/pin/pin8.png");transform:rotate(-1deg)}
-#todoList>li.pin-9,.creation.pin-9,#loginForm.pin-9,.notification.pin-9,.ui-datepicker.pin-9,.sticker.pin-9{background-image:url("/img/pin/pin9.png");transform:rotate(0)}
-#todoList>li.pin-10,.creation.pin-10,#loginForm.pin-10,.notification.pin-10,.ui-datepicker.pin-10,.sticker.pin-10{background-image:url("/img/pin/pin10.png");transform:rotate(1deg)}
-#todoList>li.pin-11,.creation.pin-11,#loginForm.pin-11,.notification.pin-11,.ui-datepicker.pin-11,.sticker.pin-11{background-image:url("/img/pin/pin11.png");transform:rotate(2deg)}
-#todoList>li.pin-12,.creation.pin-12,#loginForm.pin-12,.notification.pin-12,.ui-datepicker.pin-12,.sticker.pin-12{background-image:url("/img/pin/pin12.png");transform:rotate(3deg)}
-#todoList>li.pin-13,.creation.pin-13,#loginForm.pin-13,.notification.pin-13,.ui-datepicker.pin-13,.sticker.pin-13{background-image:url("/img/pin/pin13.png");transform:rotate(4deg)}
-#todoList>li.pin-14,.creation.pin-14,#loginForm.pin-14,.notification.pin-14,.ui-datepicker.pin-14,.sticker.pin-14{background-image:url("/img/pin/pin14.png");transform:rotate(5deg)}
-#todoList>li.pin-15,.creation.pin-15,#loginForm.pin-15,.notification.pin-15,.ui-datepicker.pin-15,.sticker.pin-15{background-image:url("/img/pin/pin15.png");transform:rotate(6deg)}
-#todoList>li.pin-16,.creation.pin-16,#loginForm.pin-16,.notification.pin-16,.ui-datepicker.pin-16,.sticker.pin-16{background-image:url("/img/pin/pin16.png");transform:rotate(7deg)}
-#todoList>li.pin-17,.creation.pin-17,#loginForm.pin-17,.notification.pin-17,.ui-datepicker.pin-17,.sticker.pin-17{background-image:url("/img/pin/pin17.png");transform:rotate(8deg)}
-#todoList>li.pin-18,.creation.pin-18,#loginForm.pin-18,.notification.pin-18,.ui-datepicker.pin-18,.sticker.pin-18{background-image:url("/img/pin/pin18.png");transform:rotate(9deg)}
-.ui-datepicker{display:none;min-height:0;width:152px;transform:rotate(-3deg);background-image:url("/img/pin/pin1.png")}
-#shareList>li{padding-left:64px;min-height:64px;margin-bottom:10px}#shareList>li.person-1{background:url("/img/people/person1.png") left top no-repeat}
-#shareList>li.person-2{background:url("/img/people/person2.png") left top no-repeat}
-#shareList>li.person-3{background:url("/img/people/person3.png") left top no-repeat}
-#shareList>li.person-4{background:url("/img/people/person4.png") left top no-repeat}
-#shareList>li.person-5{background:url("/img/people/person5.png") left top no-repeat}
-#shareList>li.person-6{background:url("/img/people/person6.png") left top no-repeat}
-#shareList>li.person-7{background:url("/img/people/person7.png") left top no-repeat}
-#shareList>li.person-8{background:url("/img/people/person8.png") left top no-repeat}
-#shareList>li.person-9{background:url("/img/people/person9.png") left top no-repeat}
-#shareList>li.person-10{background:url("/img/people/person10.png") left top no-repeat}
-#shareList>li.person-11{background:url("/img/people/person11.png") left top no-repeat}
-#shareList>li.person-12{background:url("/img/people/person12.png") left top no-repeat}
-#shareList>li.person-13{background:url("/img/people/person13.png") left top no-repeat}
-#shareList>li.person-14{background:url("/img/people/person14.png") left top no-repeat}
-#shareList>li.person-15{background:url("/img/people/person15.png") left top no-repeat}
-.types{display:inline-block;padding-right:80px;margin:10px 0;white-space:nowrap}.types .all-tasks{background:url("/img/labels/allTasks.png") 0 -23px no-repeat;transform:rotate(5deg)}
-.types .today{background:url("/img/labels/today.png") 0 -23px no-repeat;transform:rotate(-4deg)}
-.types .planned{background:url("/img/labels/planned.png") 0 -23px no-repeat;transform:rotate(3deg)}
-.types .skipped{background:url("/img/labels/skipped.png") 0 -23px no-repeat;transform:rotate(-5deg)}
-.types .no-date{background:url("/img/labels/noDate.png") 0 -23px no-repeat;transform:rotate(4deg)}
-.types .completed{background:url("/img/labels/completed.png") 0 -23px no-repeat;transform:rotate(-3deg)}
+#todoList>li.pin-1,.creation.pin-1,#loginForm.pin-1,.notification.pin-1,.ui-datepicker.pin-1,.sticker.pin-1{background-image:url("../../img/pin/pin1.png");transform:rotate(-8deg)}
+#todoList>li.pin-2,.creation.pin-2,#loginForm.pin-2,.notification.pin-2,.ui-datepicker.pin-2,.sticker.pin-2{background-image:url("../../img/pin/pin2.png");transform:rotate(-7deg)}
+#todoList>li.pin-3,.creation.pin-3,#loginForm.pin-3,.notification.pin-3,.ui-datepicker.pin-3,.sticker.pin-3{background-image:url("../../img/pin/pin3.png");transform:rotate(-6deg)}
+#todoList>li.pin-4,.creation.pin-4,#loginForm.pin-4,.notification.pin-4,.ui-datepicker.pin-4,.sticker.pin-4{background-image:url("../../img/pin/pin4.png");transform:rotate(-5deg)}
+#todoList>li.pin-5,.creation.pin-5,#loginForm.pin-5,.notification.pin-5,.ui-datepicker.pin-5,.sticker.pin-5{background-image:url("../../img/pin/pin5.png");transform:rotate(-4deg)}
+#todoList>li.pin-6,.creation.pin-6,#loginForm.pin-6,.notification.pin-6,.ui-datepicker.pin-6,.sticker.pin-6{background-image:url("../../img/pin/pin6.png");transform:rotate(-3deg)}
+#todoList>li.pin-7,.creation.pin-7,#loginForm.pin-7,.notification.pin-7,.ui-datepicker.pin-7,.sticker.pin-7{background-image:url("../../img/pin/pin7.png");transform:rotate(-2deg)}
+#todoList>li.pin-8,.creation.pin-8,#loginForm.pin-8,.notification.pin-8,.ui-datepicker.pin-8,.sticker.pin-8{background-image:url("../../img/pin/pin8.png");transform:rotate(-1deg)}
+#todoList>li.pin-9,.creation.pin-9,#loginForm.pin-9,.notification.pin-9,.ui-datepicker.pin-9,.sticker.pin-9{background-image:url("../../img/pin/pin9.png");transform:rotate(0)}
+#todoList>li.pin-10,.creation.pin-10,#loginForm.pin-10,.notification.pin-10,.ui-datepicker.pin-10,.sticker.pin-10{background-image:url("../../img/pin/pin10.png");transform:rotate(1deg)}
+#todoList>li.pin-11,.creation.pin-11,#loginForm.pin-11,.notification.pin-11,.ui-datepicker.pin-11,.sticker.pin-11{background-image:url("../../img/pin/pin11.png");transform:rotate(2deg)}
+#todoList>li.pin-12,.creation.pin-12,#loginForm.pin-12,.notification.pin-12,.ui-datepicker.pin-12,.sticker.pin-12{background-image:url("../../img/pin/pin12.png");transform:rotate(3deg)}
+#todoList>li.pin-13,.creation.pin-13,#loginForm.pin-13,.notification.pin-13,.ui-datepicker.pin-13,.sticker.pin-13{background-image:url("../../img/pin/pin13.png");transform:rotate(4deg)}
+#todoList>li.pin-14,.creation.pin-14,#loginForm.pin-14,.notification.pin-14,.ui-datepicker.pin-14,.sticker.pin-14{background-image:url("../../img/pin/pin14.png");transform:rotate(5deg)}
+#todoList>li.pin-15,.creation.pin-15,#loginForm.pin-15,.notification.pin-15,.ui-datepicker.pin-15,.sticker.pin-15{background-image:url("../../img/pin/pin15.png");transform:rotate(6deg)}
+#todoList>li.pin-16,.creation.pin-16,#loginForm.pin-16,.notification.pin-16,.ui-datepicker.pin-16,.sticker.pin-16{background-image:url("../../img/pin/pin16.png");transform:rotate(7deg)}
+#todoList>li.pin-17,.creation.pin-17,#loginForm.pin-17,.notification.pin-17,.ui-datepicker.pin-17,.sticker.pin-17{background-image:url("../../img/pin/pin17.png");transform:rotate(8deg)}
+#todoList>li.pin-18,.creation.pin-18,#loginForm.pin-18,.notification.pin-18,.ui-datepicker.pin-18,.sticker.pin-18{background-image:url("../../img/pin/pin18.png");transform:rotate(9deg)}
+.ui-datepicker{display:none;min-height:0;width:152px;transform:rotate(-3deg);background-image:url("../../img/pin/pin1.png")}
+#shareList>li{padding-left:64px;min-height:64px;margin-bottom:10px}#shareList>li.person-1{background:url("../../img/people/person1.png") left top no-repeat}
+#shareList>li.person-2{background:url("../../img/people/person2.png") left top no-repeat}
+#shareList>li.person-3{background:url("../../img/people/person3.png") left top no-repeat}
+#shareList>li.person-4{background:url("../../img/people/person4.png") left top no-repeat}
+#shareList>li.person-5{background:url("../../img/people/person5.png") left top no-repeat}
+#shareList>li.person-6{background:url("../../img/people/person6.png") left top no-repeat}
+#shareList>li.person-7{background:url("../../img/people/person7.png") left top no-repeat}
+#shareList>li.person-8{background:url("../../img/people/person8.png") left top no-repeat}
+#shareList>li.person-9{background:url("../../img/people/person9.png") left top no-repeat}
+#shareList>li.person-10{background:url("../../img/people/person10.png") left top no-repeat}
+#shareList>li.person-11{background:url("../../img/people/person11.png") left top no-repeat}
+#shareList>li.person-12{background:url("../../img/people/person12.png") left top no-repeat}
+#shareList>li.person-13{background:url("../../img/people/person13.png") left top no-repeat}
+#shareList>li.person-14{background:url("../../img/people/person14.png") left top no-repeat}
+#shareList>li.person-15{background:url("../../img/people/person15.png") left top no-repeat}
+.types{display:inline-block;padding-right:80px;margin:10px 0;white-space:nowrap}.types .all-tasks{background:url("../../img/labels/allTasks.png") 0 -23px no-repeat;transform:rotate(5deg)}
+.types .today{background:url("../../img/labels/today.png") 0 -23px no-repeat;transform:rotate(-4deg)}
+.types .planned{background:url("../../img/labels/planned.png") 0 -23px no-repeat;transform:rotate(3deg)}
+.types .skipped{background:url("../../img/labels/skipped.png") 0 -23px no-repeat;transform:rotate(-5deg)}
+.types .no-date{background:url("../../img/labels/noDate.png") 0 -23px no-repeat;transform:rotate(4deg)}
+.types .completed{background:url("../../img/labels/completed.png") 0 -23px no-repeat;transform:rotate(-3deg)}
 .types .all-tasks,.types .today,.types .planned,.types .skipped,.types .no-date,.types .completed{height:58px;width:102px;padding-left:26px;padding-top:24px;cursor:pointer;text-align:center;display:inline-block;margin-right:-80px;transition:margin-right 1s}
 .types .all-tasks:hover,.types .today:hover,.types .planned:hover,.types .skipped:hover,.types .no-date:hover,.types .completed:hover{margin-right:0}
 .types .all-tasks:last-child:hover,.types .today:last-child:hover,.types .planned:last-child:hover,.types .skipped:last-child:hover,.types .no-date:last-child:hover,.types .completed:last-child:hover{margin-right:-80px}
 #todoList{padding-left:10px;padding-bottom:180px}#todoList:after{content:'';display:block;clear:both}
 #todoList>li{float:left;margin-bottom:-160px}.new,.back{float:left}.edit,.share,.delete,.remove,.notification .confirm,.create,.complete,.login,.confirm,.new,.remove-user,.back,.logout{display:inline-block;height:24px;width:24px;opacity:.75;cursor:pointer}
 .edit:hover,.share:hover,.delete:hover,.remove:hover,.notification .confirm:hover,.create:hover,.complete:hover,.login:hover,.confirm:hover,.new:hover,.remove-user:hover,.back:hover,.logout:hover{opacity:1}
-.confirm,.new,.back,.logout,.remove-user{height:64px;width:64px}.edit{background:url("/img/actions/edit.png") left top no-repeat}
-.share{background:url("/img/actions/share.png") left top no-repeat}.delete,.remove,.notification .confirm{background:url("/img/actions/delete.png") left top no-repeat}
-.create{background:url("/img/actions/done.png") left top no-repeat}.complete{background:url("/img/actions/complete.png") left top no-repeat}
-.login{background:url("/img/actions/login.png") left top no-repeat}.confirm{background:url("/img/actions/confirm.png") left top no-repeat}
-.new{background:url("/img/actions/create.png") left top no-repeat}.back{background:url("/img/actions/back.png") left top no-repeat}
-.logout{background:url("/img/actions/logout.png") left top no-repeat}.remove-user{background:url("/img/actions/removeUser.png") left top no-repeat}
+.confirm,.new,.back,.logout,.remove-user{height:64px;width:64px}.edit{background:url("../../img/actions/edit.png") left top no-repeat}
+.share{background:url("../../img/actions/share.png") left top no-repeat}.delete,.remove,.notification .confirm{background:url("../../img/actions/delete.png") left top no-repeat}
+.create{background:url("../../img/actions/done.png") left top no-repeat}.complete{background:url("../../img/actions/complete.png") left top no-repeat}
+.login{background:url("../../img/actions/login.png") left top no-repeat}.confirm{background:url("../../img/actions/confirm.png") left top no-repeat}
+.new{background:url("../../img/actions/create.png") left top no-repeat}.back{background:url("../../img/actions/back.png") left top no-repeat}
+.logout{background:url("../../img/actions/logout.png") left top no-repeat}.remove-user{background:url("../../img/actions/removeUser.png") left top no-repeat}
 .notification{position:relative;display:inline-block;padding-bottom:24px;width:auto;background-color:#e3ff94}
 .notification .confirm{position:absolute;right:10px;bottom:10px}#loginForm,.sticker{position:absolute;top:50%;left:50%;margin:-134px 0 0 -134px;background-color:#faffbd}
 #loginForm .login,.sticker .login{box-shadow:none}

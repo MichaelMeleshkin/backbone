@@ -1,5 +1,5 @@
 @mixin bg ($dir, $img, $h:left, $v:top) {
-  background: url(/img/#{$dir}/#{$img}.png) #{$h} #{$v} no-repeat;
+  background: url(../../img/#{$dir}/#{$img}.png) #{$h} #{$v} no-repeat;
 }
 
 .top-panel {
@@ -12,6 +12,10 @@
     left: 104px;
     right: 104px;
   }
+}
+
+.crossed {
+  text-decoration: line-through;
 }
 
 .remove-user {
@@ -62,7 +66,7 @@ $noDate: lightyellow;
 
   @for $i from 1 through 18 {
     &.pin-#{$i} {
-      background-image: url(/img/pin/pin#{$i}.png);
+      background-image: url(../../img/pin/pin#{$i}.png);
       transform: rotate(unquote((-9+$i)+deg));
     }
   }
@@ -73,7 +77,7 @@ $noDate: lightyellow;
   min-height: 0;
   width: 152px;
   transform: rotate(-3deg);
-  background-image: url(/img/pin/pin1.png);
+  background-image: url(../../img/pin/pin1.png);
 }
 
 #shareList {
@@ -84,7 +88,7 @@ $noDate: lightyellow;
 
     @for $i from 1 through 15 {
       &.person-#{$i} {
-        background: url(/img/people/person#{$i}.png) left top no-repeat;
+        background: url(../../img/people/person#{$i}.png) left top no-repeat;
       }
     }
   }

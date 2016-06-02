@@ -30,8 +30,6 @@ function routes(app) {
                         req.session.uname = user.name;
 
                         res.redirect('/');
-                        console.log(req.session.uid);
-                        console.log('redirect1');
 
                         database.close();
                     }
@@ -76,7 +74,6 @@ function routes(app) {
                                     isNew: false
                                 });
 
-                                console.log(share.name + " | " + item.title);
                             });
 
                         }
