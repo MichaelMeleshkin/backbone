@@ -1,5 +1,6 @@
 var checkAuth = require('../middleware/checkAuth'),
     crypto = require('crypto'),
+    util = require('util'),
     config = require('../config'),
     ObjectID = require('mongodb').ObjectID,
     db = require('../mongodb');
@@ -88,10 +89,25 @@ function routes(app) {
                                     collection.findOneAndDelete({_id: ObjectID(req.session.uid)}, function (err, user) {
                                         if (err) throw err;
 
-                                        database.close();
+                                        db.connect(function (collection, database) {
+                                            collection.update({}, { $pull : { 'share' : {name : req.session.uname} } }, { multi: true }, function(err, result) {
+                                                if (err) throw err;
 
-                                        req.session.destroy();
-                                        res.render('remove');
+                                                db.connectNotification(function (collection, database) {
+                                                    collection.deleteMany({username : req.session.uname}, function(err, result) {
+                                                        if (err) throw err;
+
+                                                        database.close();
+
+                                                        req.session.destroy();
+                                                        res.render('remove');
+
+                                                    });
+                                                });
+
+                                            });
+                                        });
+
                                     });
                                 });
                             });
@@ -102,10 +118,25 @@ function routes(app) {
                             collection.findOneAndDelete({_id: ObjectID(req.session.uid)}, function (err, user) {
                                 if (err) throw err;
 
-                                database.close();
+                                db.connect(function (collection, database) {
+                                    collection.update({}, { $pull : { 'share' : {name : req.session.uname} } }, { multi: true }, function(err, result) {
+                                        if (err) throw err;
 
-                                req.session.destroy();
-                                res.render('remove');
+                                        db.connectNotification(function (collection, database) {
+                                            collection.deleteMany({username : req.session.uname}, function(err, result) {
+                                                if (err) throw err;
+
+                                                database.close();
+
+                                                req.session.destroy();
+                                                res.render('remove');
+
+                                            });
+                                        });
+
+                                    });
+                                });
+
                             });
                         });
 
