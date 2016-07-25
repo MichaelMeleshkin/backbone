@@ -45,8 +45,9 @@ App.View.TodoListView = Backbone.View.extend({
     renderNew: function(todo) {
         var todoView = new App.View.TodoView({model: todo});
 
-        var $todo = '';
+        var $todo = todoView.render().$el;
 
+        console.log();
         if (todo.get('date')) {
 
             var date = todo.get('date').split('/'),
@@ -68,19 +69,19 @@ App.View.TodoListView = Backbone.View.extend({
                 isSkipped = ( isSkippedYear || (isCurrentYear && isSkippedMonth) || (isCurrentYear && isCurrentMonth && isSkippedDay) );
 
             if ( isToday ) {
-                $todo = todoView.render().$el.addClass('today');
+                $todo.addClass('today');
             } else if ( isPlanned ) {
-                $todo = todoView.render().$el.addClass('planned');
+                $todo.addClass('planned');
             } else if ( isSkipped ) {
-                $todo = todoView.render().$el.addClass('skipped');
+                $todo.addClass('skipped');
             }
 
         } else {
-            $todo = todoView.render().$el.addClass('no-date');
+            $todo.addClass('no-date');
         }
 
         if (todo.get('status') == 'completed') {
-            $todo = todoView.render().$el.addClass('completed');
+            $todo.addClass('completed');
         }
 
         this.$el.append( $todo );
