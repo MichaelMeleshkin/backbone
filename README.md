@@ -5,10 +5,10 @@
 2. NodeJS, NPM and MongoDB must be installed on the PC.
 3. Run MongoDB: "sudo systemctl start mongodb"
 4. Install all dependencies: "npm install"
-5. For PHPStorm you should go to the "Run/Debug Configuration" and create new Node.js configuration:
-- Node interpreter: path to nodejs folder (in my case: "/usr/bin/node")
-- Working directory: path to backbone application
-- JavaScript file: server/app.js
+5. For PHPStorm you should go to the "Run/Debug Configuration" and create new Node.js configuration ![alt text](./nodejs_phpstorm_configuration.png "PHPStorm NodeJS Configuration"):
+..* Node interpreter: path to nodejs folder (in my case: "/usr/bin/node")
+..* Working directory: path to backbone application
+..* JavaScript file: server/app.js
 6. Launch the server which you have just created
 
 <!--Install mongodb and run "sudo systemctl start mongodb"-->
